@@ -4,6 +4,7 @@ import {
   faMagnifyingGlass,
   faPlus,
   faRightFromBracket,
+  faUserTie,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
@@ -12,9 +13,11 @@ import SearchModal from "../Modal/SearchModal";
 import { useDispatch } from "react-redux";
 import { openModalSearch, showModalTask } from "../../slices/modalSlice";
 import ModalTask from "../Modal/ModalTask";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function SideBar() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const styleShowSideBar = {
     width: "15%",
@@ -94,9 +97,24 @@ export default function SideBar() {
               About
             </span>
           </div>
+          <div className="cursor-pointer w-44 py-[15%] px-[5%] text-white font-semibold ">
+            <NavLink className="flex items-center gap-3" to="/login">
+              <FontAwesomeIcon className="text-2xl" icon={faUserTie} />
+              <span
+                className={`${
+                  showSideBar ? `inline-block opacity-100 ` : `hidden opacity-0`
+                } transition-all text-white  font-semibold`}
+              >
+                Sign In
+              </span>
+            </NavLink>
+          </div>
           <div
-            onClick={() => dispatch(signOut())}
-            className="cursor-pointer w-44 py-[5%] px-[7%] text-white font-semibold flex items-center gap-3"
+            onClick={() => {
+              dispatch(signOut());
+              navigate("/login");
+            }}
+            className="cursor-pointer w-44 py-[15%] px-[5%] text-white font-semibold flex items-center gap-3"
           >
             <FontAwesomeIcon className="text-2xl" icon={faRightFromBracket} />
             <span

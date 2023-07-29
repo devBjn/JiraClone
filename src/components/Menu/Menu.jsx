@@ -18,7 +18,14 @@ export default function Menu() {
     <div className="menu">
       <div className="account">
         <div className="avatar">
-          <img src={user?.avatar} alt="" />
+          <img
+            src={
+              user
+                ? user?.avatar
+                : `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe0Hsu8YYt0Gi6ZxY-aPkV7Os7abmxProPNg&usqp=CAU`
+            }
+            alt=""
+          />
         </div>
         <div className="account-info">
           <p>{user?.name}</p>
