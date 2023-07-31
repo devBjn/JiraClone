@@ -60,8 +60,8 @@ function ModalDetail() {
   };
   const handleOk = () => {
     dispatch(handleUpdateTask(taskDetail));
-    dispatch(closeModalDetail());
     dispatch(getProjectDetail(taskDetail.projectId));
+    dispatch(closeModalDetail());
   };
   return (
     <Modal
@@ -73,8 +73,6 @@ function ModalDetail() {
           <FontAwesomeIcon icon={faXmark} />
         </div>
       }
-      onCancel={handleCancel}
-      onOk={handleOk}
       footer={[
         <Button onClick={handleCancel}>Cancel</Button>,
         <Button
@@ -419,11 +417,6 @@ function ModalDetail() {
                         </Col>
                       </Row>
                     </div>
-                  </div>
-
-                  <div style={{ color: "#929398" }}>Create at a month ago</div>
-                  <div style={{ color: "#929398" }}>
-                    Update at a few seconds ago
                   </div>
                 </div>
               </div>

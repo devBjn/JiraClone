@@ -7,15 +7,14 @@ import { openModalDetail } from "../../slices/modalSlice";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { apiUpdateStatusTask } from "../../apis/taskAPI";
 import { getProjectDetail } from "../../slices/projectSlice";
-import AlertError from "../../components/Alert/AlertError";
 
 export default function ContentDetail({ taskList }) {
   const dispatch = useDispatch();
+
   const handleDragEnd = async (result) => {
     try {
       const { source, destination } = result;
       const { projectId, taskId } = JSON.parse(result.draggableId);
-      console.log(result);
       if (!destination) return;
       if (
         destination.index === source.index &&
@@ -27,7 +26,6 @@ export default function ContentDetail({ taskList }) {
         dispatch(getProjectDetail(projectId));
       }
     } catch (error) {
-      // AlertError(error?.response?.data?.message);
       console.log(error);
     }
   };

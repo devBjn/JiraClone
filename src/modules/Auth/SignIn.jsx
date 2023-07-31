@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -48,7 +48,9 @@ export default function SignIn() {
     console.log(errors);
   };
 
-  if (user) navigate("/");
+  useEffect(() => {
+    if (user) navigate("/");
+  }, [user]);
 
   return (
     <>

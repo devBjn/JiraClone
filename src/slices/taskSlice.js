@@ -113,10 +113,10 @@ const taskSlice = createSlice({
         ...state.taskDetail.assigness,
         action.payload,
       ];
-      const listUserAsign = state.taskDetail.assigness?.map((user, index) => {
+      const listUserAssign = state.taskDetail.assigness?.map((user, index) => {
         return user.id;
       });
-      state.taskDetail = { ...state.taskDetail, listUserAsign };
+      state.taskDetail = { ...state.taskDetail, listUserAssign };
     },
     removeUserFromTask: (state, action) => {
       state.taskDetail.assigness = [
@@ -124,10 +124,10 @@ const taskSlice = createSlice({
           (user) => user.id !== action.payload
         ),
       ];
-      const listUserAsign = state.taskDetail.assigness?.map((user, index) => {
+      const listUserAssign = state.taskDetail.assigness?.map((user, index) => {
         return user.id;
       });
-      state.taskDetail = { ...state.taskDetail, listUserAsign };
+      state.taskDetail = { ...state.taskDetail, listUserAssign };
     },
   },
   extraReducers: (builder) => {
@@ -217,6 +217,10 @@ const taskSlice = createSlice({
       return {
         ...state,
         isLoading: false,
+        // taskDetail: {
+        //   ...action.payload,
+        //   assigness: [...state.taskDetail.assigness],
+        // },
         taskDetail: action.payload,
       };
     });
